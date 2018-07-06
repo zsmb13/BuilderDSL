@@ -18,8 +18,16 @@ class MainActivity : AppCompatActivity() {
 
 }
 
-fun Activity.drawer(dummy: () -> Unit) {
-    DrawerBuilder()
-            .withActivity(this)
-            .build()
+fun Activity.drawer(setup: DrawerBuilderKt.() -> Unit) {
+    val builder = DrawerBuilderKt(this)
+    builder.setup()
+    builder.build()
+}
+
+class DrawerBuilderKt(activity: Activity) {
+    val builder = DrawerBuilder().withActivity(activity)
+
+    internal fun build() {
+        builder.build()
+    }
 }
