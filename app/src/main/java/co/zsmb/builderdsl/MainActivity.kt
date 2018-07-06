@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
             drawerLayout = R.layout.material_drawer_fits_not
             translucentStatusBar = false
 
-            primaryItem()
-            primaryItem()
+            primaryItem(name = "Home", description = "Get started here!")
+            primaryItem(name = "Settings", description = "Tinker around")
         }
     }
 
@@ -52,6 +52,9 @@ class DrawerBuilderKt(activity: Activity) {
 
 }
 
-fun DrawerBuilderKt.primaryItem() {
-    builder.addDrawerItems(PrimaryDrawerItem())
+fun DrawerBuilderKt.primaryItem(name: String = "", description: String = "") {
+    val item = PrimaryDrawerItem()
+            .withName(name)
+            .withDescription(description)
+    builder.addDrawerItems(item)
 }
