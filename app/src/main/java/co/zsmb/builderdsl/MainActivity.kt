@@ -13,6 +13,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         drawer {
+            drawerLayout = R.layout.material_drawer_fits_not
+            translucentStatusBar = false
+
             primaryItem()
             primaryItem()
         }
@@ -32,6 +35,21 @@ class DrawerBuilderKt(activity: Activity) {
     internal fun build() {
         builder.build()
     }
+
+    var drawerLayout: Int
+        @Deprecated(message = "Non readable property.", level = DeprecationLevel.ERROR)
+        get() = throw UnsupportedOperationException("")
+        set(value) {
+            builder.withDrawerLayout(value)
+        }
+
+    var translucentStatusBar: Boolean
+        @Deprecated(message = "Non readable property.", level = DeprecationLevel.ERROR)
+        get() = throw UnsupportedOperationException("")
+        set(value) {
+            builder.withTranslucentStatusBar(value)
+        }
+
 }
 
 fun DrawerBuilderKt.primaryItem() {
