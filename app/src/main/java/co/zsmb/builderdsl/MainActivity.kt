@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.mikepenz.materialdrawer.DrawerBuilder
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +13,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         drawer {
-
+            primaryItem()
+            primaryItem()
         }
     }
 
@@ -30,4 +32,8 @@ class DrawerBuilderKt(activity: Activity) {
     internal fun build() {
         builder.build()
     }
+}
+
+fun DrawerBuilderKt.primaryItem() {
+    builder.addDrawerItems(PrimaryDrawerItem())
 }
