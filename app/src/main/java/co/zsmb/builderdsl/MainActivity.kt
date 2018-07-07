@@ -18,9 +18,16 @@ class MainActivity : AppCompatActivity() {
 
             primaryItem(name = "Home", description = "Get started here!")
             primaryItem(name = "Settings", description = "Tinker around")
+
+            onItemClick { position ->
+                when (position) {
+                    0 -> toast("Home clicked")
+                    1 -> toast("Settings clicked")
+                }
+                true
+            }
         }
     }
-
 }
 
 fun Activity.drawer(setup: DrawerBuilderKt.() -> Unit) {
@@ -49,6 +56,10 @@ class DrawerBuilderKt(activity: Activity) {
         set(value) {
             builder.withTranslucentStatusBar(value)
         }
+
+    fun onItemClick(handler: (position: Int) -> Boolean) {
+        builder.withOnDrawerItemClickListener { _, position, _ -> handler(position) }
+    }
 
 }
 
